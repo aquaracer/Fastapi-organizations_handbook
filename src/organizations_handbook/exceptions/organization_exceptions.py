@@ -1,2 +1,2 @@
 class OrganizationNotFound(Exception):
-    detail = 'Organization Not Found'
+    detail = "Organization Not Found"

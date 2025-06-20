@@ -5,16 +5,24 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.config.database import get_db_session
 from src.config.project_config import Settings
-from src.organizations_handbook.repositories.organization_repository import OrganizationRepository
-from src.organizations_handbook.services.organization_services import OrganizationService
+from src.organizations_handbook.repositories.organization_repository import (
+    OrganizationRepository,
+)
+from src.organizations_handbook.services.organization_services import (
+    OrganizationService,
+)
 
 
-async def get_organization_repository(db_session: AsyncSession = Depends(get_db_session)) -> OrganizationRepository:
+async def get_organization_repository(
+    db_session: AsyncSession = Depends(get_db_session),
+) -> OrganizationRepository:
     return OrganizationRepository(db_session=db_session)
 
 
 async def get_organization_service(
-        organization_repository: OrganizationRepository = Depends(get_organization_repository),
+    organization_repository: OrganizationRepository = Depends(
+        get_organization_repository
+    ),
 ) -> OrganizationService:
     return OrganizationService(organization_repository=organization_repository)
 

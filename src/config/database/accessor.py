@@ -4,7 +4,9 @@ from src.config.project_config import Settings
 
 settings = Settings()
 
-engine = create_async_engine(url=Settings().db_url, future=True, echo=True, pool_pre_ping=True)
+engine = create_async_engine(
+    url=Settings().db_url, future=True, echo=True, pool_pre_ping=True
+)
 
 AsyncSessionFactory = async_sessionmaker(
     engine,

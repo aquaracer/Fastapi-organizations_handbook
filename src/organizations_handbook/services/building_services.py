@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 
 from src.config.project_config import Settings
-from src.organizations_handbook.repositories.building_repository import BuildingRepository
+from src.organizations_handbook.repositories.building_repository import (
+    BuildingRepository,
+)
 from src.organizations_handbook.schemas.building_schema import BuildingCreateSchema
 
 
@@ -12,4 +14,3 @@ class BuildingService:
 
     async def add_building(self, body: BuildingCreateSchema) -> None:
         await self.building_repository.add_building(body=body)
-
